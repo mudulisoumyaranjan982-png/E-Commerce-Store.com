@@ -205,3 +205,8 @@ nav {
     transform: scale(1.05);
     background: linear-gradient(135deg, #e68a00, #d97706);
 }
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr !important;
+    }
+}
