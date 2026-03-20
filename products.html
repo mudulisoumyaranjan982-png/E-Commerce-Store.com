@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - SoumyaMart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛒 SoumyaMart</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="products.html">📦 Products</a></li>
+                <li><a href="categories.html">📂 Categories</a></li>
+                <li><a href="cart.html">🛒 Cart (<span class="cart-count">0</span>)</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>🎉 All Products (1250+ Items)</h1>
+            <p>• Free Delivery • 30 Days Return</p>
+        </div>
+
+        <div class="product-grid">
+            <!-- iPhone -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-title">Apple iPhone 15 Pro Max 256GB</div>
+                    <div class="product-price">₹89,999</div>
+                    <div class="original-price">₹1,09,900</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.8 (12,458)</div>
+                    <button class="btn" onclick="addToCart('iphone15', 'iPhone 15 Pro Max', 89999, '📱')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Samsung -->
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-title">Samsung Galaxy S24 Ultra 512GB</div>
+                    <div class="product-price">₹1,14,999</div>
+                    <div class="original-price">₹1,29,999</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.7 (8,234)</div>
+                    <button class="btn" onclick="addToCart('s24ultra', 'Galaxy S24 Ultra', 114999, '📱')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Laptop -->
+            <div class="product-card">
+                <div class="product-image">💻</div>
+                <div class="product-info">
+                    <div class="product-title">Dell XPS 13 i7 16GB RAM 1TB SSD</div>
+                    <div class="product-price">₹1,12,490</div>
+                    <div class="original-price">₹1,35,000</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.9 (5,678)</div>
+                    <button class="btn" onclick="addToCart('dellxps', 'Dell XPS 13', 112490, '💻')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Headphones -->
+            <div class="product-card">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <div class="product-title">Sony WH-1000XM5 Noise Cancelling</div>
+                    <div class="product-price">₹24,999</div>
+                    <div class="original-price">₹29,999</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.8 (23,456)</div>
+                    <button class="btn" onclick="addToCart('sonyheadphones', 'Sony WH-1000XM5', 24999, '🎧')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Smart Watch -->
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <div class="product-title">Apple Watch Series 9 45mm</div>
+                    <div class="product-price">₹42,999</div>
+                    <div class="original-price">₹47,900</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.7 (9,876)</div>
+                    <button class="btn" onclick="addToCart('applewatch', 'Apple Watch Series 9', 42999, '⌚')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gaming Console -->
+            <div class="product-card">
+                <div class="product-image">🎮</div>
+                <div class="product-info">
+                    <div class="product-title">PlayStation 5 Slim + 2 Games</div>
+                    <div class="product-price">₹48,999</div>
+                    <div class="original-price">₹54,990</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.9 (15,234)</div>
+                    <button class="btn" onclick="addToCart('ps5', 'PlayStation 5 Slim', 48999, '🎮')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Camera -->
+            <div class="product-card">
+                <div class="product-image">📷</div>
+                <div class="product-info">
+                    <div class="product-title">Canon EOS R5 Mirrorless Camera</div>
+                    <div class="product-price">₹3,29,999</div>
+                    <div class="original-price">₹3,59,999</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.8 (3,456)</div>
+                    <button class="btn" onclick="addToCart('canoneos', 'Canon EOS R5', 329999, '📷')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Keyboard -->
+            <div class="product-card">
+                <div class="product-image">⌨️</div>
+                <div class="product-info">
+                    <div class="product-title">Logitech MX Mechanical Keyboard</div>
+                    <div class="product-price">₹12,499</div>
+                    <div class="original-price">₹14,995</div>
+                    <div class="product-rating">⭐⭐⭐⭐⭐ 4.7 (7,890)</div>
+                    <button class="btn" onclick="addToCart('logitechkb', 'Logitech MX Mechanical', 12499, '⌨️')">
+                        🛒 Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SoumyaMart - Made with ❤️ by Soumyaranjan | 1250+ Products | Free Delivery</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

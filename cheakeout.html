@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SoumyaMart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header style="background: #232f3e; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000;">
+        <nav style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+            <div class="logo" style="font-size: 1.8rem; font-weight: 800; color: #ff9900;">🛒 SoumyaMart</div>
+            <div style="display: flex; gap: 1rem;">
+                <a href="cart.html" style="color: white; text-decoration: none;">← Back to Cart</a>
+                <a href="index.html" style="color: white; text-decoration: none;">🏠 Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="margin-top: 100px; max-width: 1400px; margin: 0 auto; padding: 2rem;">
+        <div class="page-header" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 2rem; text-align: center;">
+            <h1 style="color: #232f3e; font-size: 2.5rem; margin-bottom: 0.5rem;">
+                <i class="fas fa-credit-card" style="color: #28a745;"></i> Checkout
+            </h1>
+            <p style="color: #666; font-size: 1.2rem;">Fill in details to confirm your order</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 380px; gap: 3rem;">
+            
+            <!-- Checkout Form -->
+            <div>
+                <div style="background: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); padding: 2.5rem; margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.5rem; color: #232f3e; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f1f1f1;">
+                        <i class="fas fa-user"></i> Delivery Address
+                    </h3>
+                    
+                    <form id="checkoutForm">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">First Name *</label>
+                                <input type="text" id="firstName" required style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Last Name *</label>
+                                <input type="text" id="lastName" required style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Phone Number *</label>
+                            <input type="tel" id="phone" required style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Address *</label>
+                            <textarea id="address" rows="3" required style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">City *</label>
+                                <input type="text" id="city" required style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Pincode *</label>
+                                <input type="text" id="pincode" required style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                            </div>
+                        </div>
+
+                        <!-- Delivery Options -->
+                        <div style="margin-bottom: 2rem;">
+                            <label style="display: block; margin-bottom: 1rem; font-weight: 600; color: #232f3e; font-size: 1.1rem;">
+                                <i class="fas fa-truck"></i> Delivery Option
+                            </label>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; cursor: pointer;">
+                                    <input type="radio" name="delivery" value="standard" checked style="width: 20px; height: 20px;">
+                                    <span>Standard Delivery (2-3 days) - <strong>FREE</strong></span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; cursor: pointer;">
+                                    <input type="radio" name="delivery" value="express" style="width: 20px; height: 20px;">
+                                    <span>Express Delivery (Next Day) - ₹99</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Items -->
+                <div style="background: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); padding: 2rem; position: sticky; top: 120px;">
+                    <h3 style="font-size: 1.5rem; color: #232f3e; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid #f1f1f1;">
+                        Order Items (<span id="checkoutItemCount">0</span>)
+                    </h3>
+                    <div id="checkoutItemsList"></div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div>
+                <div style="background: linear-gradient(135deg, #28a745, #20c997); color: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(40, 167, 69, 0.3);">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 2rem; text-align: center;">
+                        <i class="fas fa-file-invoice-dollar"></i> Order Summary
+                    </h3>
+                    
+                    <div style="display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); font-size: 1.1rem;">
+                        <span>Items Total:</span>
+                        <span id="itemsTotal">₹0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <span>Delivery:</span>
+                        <span id="deliveryCharge">FREE</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.2); font-size: 1.1rem;">
+                        <span>Tax (5%):</span>
+                        <span id="taxAmount">₹0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 1.5rem 0; font-size: 1.4rem; font-weight: 700;">
+                        <span>Total Amount:</span>
+                        <span style="font-size: 1.6rem;" id="grandTotal">₹0</span>
+                    </div>
+
+                    <button onclick="placeOrder()" class="btn" style="width: 100%; background: white; color: #28a745; font-size: 1.3rem; padding: 1.3rem; font-weight: 700; border-radius: 8px; border: none; cursor: pointer; margin-top: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                        <i class="fas fa-check-circle"></i> Place Order & Pay Now
+                    </button>
+
+                    <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem;">
+                        <div><i class="fas fa-lock" style="color: #ffd700;"></i> Secure Payment | 100% Safe</div>
+                        <div style="margin-top: 0.5rem;">COD Available | Free Delivery</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #232f3e; color: white; text-align: center; padding: 3rem 2rem; margin-top: 5rem;">
+        <p>SoumyaMart Checkout - Made by Soumyaranjan Muduli | Bhubaneswar, Odisha</p>
+    </footer>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let deliveryCharge = 0;
+
+        // Add this in checkout.html near the top:
+const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
+if (loggedInUserEmail) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(u => u.email === loggedInUserEmail);
+    if (user) {
+        document.getElementById('firstName').value = user.firstName;
+        document.getElementById('lastName').value = user.lastName;
+        // ... rest fields auto-fill
+    }
+}
+
+        function renderCheckout() {
+            if (cart.length === 0) {
+                alert('Cart is empty! Please add products first.');
+                window.location.href = 'cart.html';
+                return;
+            }
+
+            document.getElementById('checkoutItemCount').textContent = cart.length;
+            
+            const itemsList = document.getElementById('checkoutItemsList');
+            let subtotal = 0;
+            
+            itemsList.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                return `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #eee;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 60px; height: 60px; background: ${typeof item.image === 'string' ? '#f8f9fa' : 'white'}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                ${typeof item.image === 'string' ? item.image : item.image}
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; color: #232f3e;">${item.name}</div>
+                                <div style="color: #666; font-size: 0.9rem;">Qty: ${item.quantity}</div>
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; color: #B12704;">₹${itemTotal.toLocaleString()}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const itemsTotal = subtotal;
+            const tax = Math.round(itemsTotal * 0.05);
+            const grandTotal = itemsTotal + deliveryCharge + tax;
+
+            document.getElementById('itemsTotal').textContent = `₹${itemsTotal.toLocaleString()}`;
+            document.getElementById('deliveryCharge').textContent = deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge}`;
+            document.getElementById('taxAmount').textContent = `₹${tax.toLocaleString()}`;
+            document.getElementById('grandTotal').textContent = `₹${grandTotal.toLocaleString()}`;
+        }
+
+        // Delivery option change
+        document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                deliveryCharge = this.value === 'express' ? 99 : 0;
+                document.getElementById('deliveryCharge').textContent = deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge}`;
+                renderCheckout();
+            });
+        });
+
+        function placeOrder() {
+            if (!checkoutForm.checkValidity()) {
+                alert('Please fill all fields!');
+                return;
+            }
+
+            const orderData = {
+                customer: {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    pincode: document.getElementById('pincode').value
+                },
+                items: cart,
+                total: document.getElementById('grandTotal').textContent,
+                delivery: document.querySelector('input[name="delivery"]:checked').value
+            };
+
+            // Save order
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(orderData);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`✅ Order successfully placed!\n\nOrder Details:\n${orderData.customer.firstName} ${orderData.customer.lastName}\n${orderData.customer.phone}\n${orderData.customer.address}\n\nTotal: ${orderData.total}\n\nDelivery within 2-3 days! 🚚`);
+            
+            window.location.href = 'orders.html';
+        }
+
+        // Load checkout
+        document.addEventListener('DOMContentLoaded', renderCheckout);
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

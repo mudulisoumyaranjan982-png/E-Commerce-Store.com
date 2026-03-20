@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - SoumyaMart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛒 SoumyaMart</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="products.html">📦 Products</a></li>
+                <li><a href="cart.html">🛒 Cart (<span class="cart-count">0</span>)</a></li>
+                <li><a href="about.html">ℹ️ About</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 90px; padding: 2rem;">
+        <!-- Empty Cart Message -->
+        <div id="emptyCart" style="text-align: center; padding: 4rem 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: none;">
+            <div style="font-size: 5rem; color: #ff6b35; margin-bottom: 1rem;"><i class="fas fa-shopping-cart"></i></div>
+            <h2 style="color: #232f3e; font-size: 2.5rem; margin-bottom: 1rem;">Your Cart is Empty!</h2>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">Add products to start shopping</p>
+            <a href="products.html" class="btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; padding: 1rem 3rem; font-size: 1.2rem; border-radius: 50px;">🛒 View Products</a>
+        </div>
+
+        <!-- Cart Items -->
+        <div id="cartItems" style="display: none;">
+            <div class="page-header">
+                <h1 style="font-size: 2.5rem; color: #232f3e;"><i class="fas fa-shopping-cart"></i> Shopping Cart</h1>
+                <p id="cartSummary" style="font-size: 1.2rem; color: #666;"></p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 400px; gap: 3rem; max-width: 1400px; margin: 0 auto;">
+                
+                <!-- Cart Items List -->
+                <div>
+                    <div style="background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid #f1f1f1;">
+                            <h3 style="font-size: 1.5rem; color: #232f3e;">Cart Items (<span id="itemCount">0</span>)</h3>
+                            <button onclick="clearCart()" style="background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
+                                <i class="fas fa-trash"></i> Clear All
+                            </button>
+                        </div>
+
+                        <div id="cartList"></div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div>
+                    <div style="background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 2rem; position: sticky; top: 120px;">
+                        <h3 style="font-size: 1.5rem; color: #232f3e; margin-bottom: 1.5rem; border-bottom: 2px solid #f1f1f1; padding-bottom: 1rem;">Order Summary</h3>
+                        
+                        <div style="display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #eee;">
+                            <span>Items:</span>
+                            <span id="totalItems">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #eee; font-size: 1.1rem;">
+                            <span>Total Amount:</span>
+                            <span style="color: #B12704; font-weight: 700; font-size: 1.4rem;" id="totalAmount">₹0</span>
+                        </div>
+                        
+                        <div style="margin-top: 2rem;">
+                            <button onclick="checkout()" class="btn" style="width: 100%; background: linear-gradient(135deg, #28a745, #20c997); font-size: 1.2rem; padding: 1.2rem;">
+                                <i class="fas fa-credit-card"></i> Proceed to Checkout ₹<span id="finalTotal">0</span>
+                            </button>
+                            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <i class="fas fa-truck"></i> Free Delivery | COD Available
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #232f3e; color: white; text-align: center; padding: 3rem 2rem; margin-top: 4rem;">
+        <p>SoumyaMart - Made by Soumyaranjan Muduli | Bhubaneswar, Odisha</p>
+    </footer>
+
+    <script>
+        // Cart functions
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function renderCart() {
+            const cartItemsDiv = document.getElementById('cartItems');
+            const emptyCartDiv = document.getElementById('emptyCart');
+            const cartList = document.getElementById('cartList');
+            const itemCount = document.getElementById('itemCount');
+            const totalItems = document.getElementById('totalItems');
+            const totalAmount = document.getElementById('totalAmount');
+            const finalTotal = document.getElementById('finalTotal');
+            const cartSummary = document.getElementById('cartSummary');
+
+            if (cart.length === 0) {
+                cartItemsDiv.style.display = 'none';
+                emptyCartDiv.style.display = 'block';
+                updateCartCount();
+                return;
+            }
+
+            cartItemsDiv.style.display = 'block';
+            emptyCartDiv.style.display = 'none';
+
+            let total = 0;
+            let itemsCount = 0;
+
+            cartList.innerHTML = cart.map((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                itemsCount += item.quantity;
+                
+                return `
+                    <div style="display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid #eee; align-items: center;">
+                        <div style="width: 100px; height: 100px; border-radius: 8px; background: ${typeof item.image === 'string' && !item.image.startsWith('http') ? '#f8f9fa' : 'white'}; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                            ${typeof item.image === 'string' ? (item.image.startsWith('http') ? `<img src="${item.image}" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">` : item.image) : item.image}
+                        </div>
+                        <div style="flex: 1;">
+                            <h4 style="color: #232f3e; margin-bottom: 0.5rem;">${item.name}</h4>
+                            <p style="color: #B12704; font-weight: 700; font-size: 1.2rem;">₹${item.price.toLocaleString()}</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <button onclick="updateQuantity(${index}, -1)" style="background: #f8f9fa; border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 6px; cursor: pointer; margin-bottom: 0.5rem;">-</button>
+                            <div style="font-weight: 600; font-size: 1.2rem; margin: 0.5rem 0;">${item.quantity}</div>
+                            <button onclick="updateQuantity(${index}, 1)" style="background: #f8f9fa; border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 6px; cursor: pointer;">+</button>
+                            <br>
+                            <button onclick="removeItem(${index})" style="background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; font-size: 0.9rem;">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                        <div style="text-align: right; font-weight: 700; color: #28a745;">
+                            ₹${itemTotal.toLocaleString()}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            itemCount.textContent = cart.length;
+            totalItems.textContent = itemsCount;
+            totalAmount.textContent = `₹${total.toLocaleString()}`;
+            finalTotal.textContent = total.toLocaleString();
+            cartSummary.textContent = `${itemsCount} items | Free Delivery | COD Available`;
+            updateCartCount();
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function clearCart() {
+            if (confirm('Remove all items?')) {
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                renderCart();
+            }
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Cart is empty!');
+                return;
+            }
+            alert(`Order successful! Total: ₹${document.getElementById('finalTotal').textContent}\nOpen products page to continue shopping! 🚀`);
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        // Render cart on page load
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

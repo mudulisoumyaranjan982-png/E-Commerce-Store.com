@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoumyaMart - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛒 SoumyaMart</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="products.html">📦 Products</a></li>
+                <li><a href="cart.html">🛒 Cart (<span class="cart-count">0</span>)</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+                <li><a href="login.html">🔑 Login</a></li>
+                <li><a href="register.html">📝 Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="page-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 2rem;">
+            <h1 style="font-size: 3rem;">🛍️ Welcome to SoumyaMart!</h1>
+            <p style="font-size: 1.3rem;">Like Amazon experience • low prices • Fast Delivery</p>
+        </div>
+
+        <section class="featured">
+            <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: #232f3e;">🔥 Featured Products</h2>
+            <div class="product-grid">
+                
+                <!-- 🔥 iPhone 15 - your local image -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="iphone 15.jpg" alt="Apple iPhone 15" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Apple iPhone 15 128GB</div>
+                        <div class="product-price">₹69,999</div>
+                        <div class="original-price">₹79,900</div>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ 4.9 (25,678)</div>
+                        <button class="btn" onclick="addToCart('iphone15-local', 'iPhone 15 128GB', 69999, 'iphone 15.jpg')">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="macbook m2.jpg" alt="MacBook" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Apple MacBook Air M2 2024</div>
+                        <div class="product-price">₹99,999</div>
+                        <div class="original-price">₹1,19,900</div>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ 4.8 (12,345)</div>
+                        <button class="btn" onclick="addToCart('macbook', 'MacBook Air M2', 99999, 'macbook m2.jpg')">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Airpods pro.jpg" alt="AirPods" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title">Air Pods Pro 2nd Gen</div>
+                        <div class="product-price">₹22,999</div>
+                        <div class="original-price">₹24,999</div>
+                        <div class="product-rating">⭐⭐⭐⭐⭐ 4.7 (18,901)</div>
+                        <button class="btn" onclick="addToCart('airpods', 'AirPods Pro 2', 22999, 'Airpods pro.jpg')">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4 more products same pattern... -->
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 SoumyaMart - Made by Soumyaranjan 🚀 | Free Delivery | COD Available</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

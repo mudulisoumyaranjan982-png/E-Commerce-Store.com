@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SoumyaMart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛒 SoumyaMart</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="products.html">📦 Products</a></li>
+                <li><a href="cart.html">🛒 Cart (<span class="cart-count">0</span>)</a></li>
+                <li><a href="login.html">🔐 Login</a></li>
+                <li><a href="register.html">📝 Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 90px; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div style="max-width: 450px; width: 100%;">
+            <!-- Login Form -->
+            <div id="loginFormContainer" style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 25px 70px rgba(0,0,0,0.2);">
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <h1 style="font-size: 2.8rem; color: #232f3e; margin-bottom: 0.5rem; background: linear-gradient(135deg, #ff6b35, #f7931e); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔐 Welcome Back</h1>
+                    <p style="color: #666; font-size: 1.1rem;">Log in to your account</p>
+                </div>
+
+                <form id="loginForm">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Email ID or Phone Number *</label>
+                        <div style="position: relative;">
+                            <i class="fas fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #999; font-size: 1.1rem;"></i>
+                            <input type="text" id="loginIdentifier" required placeholder="Enter email or phone" style="padding-left: 3rem;">
+                        </div>
+                        <div id="loginError" style="color: #dc3545; font-size: 0.9rem; display: none; margin-top: 0.5rem;"></div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Password *</label>
+                        <div style="position: relative;">
+                            <i class="fas fa-lock" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #999; font-size: 1.1rem;"></i>
+                            <input type="password" id="loginPassword" required placeholder="Enter password" style="padding-left: 3rem;">
+                            <i class="fas fa-eye toggle-password" id="togglePassword" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: #999; cursor: pointer;"></i>
+                        </div>
+                        <div id="passwordError" style="color: #dc3545; font-size: 0.9rem; display: none; margin-top: 0.5rem;"></div>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem;">
+                            <input type="checkbox" id="rememberMe" style="width: 18px; height: 18px;">
+                            <span style="color: #333;">Remember Me</span>
+                        </label>
+                        <a href="#" style="color: #ff9900; font-weight: 600; font-size: 0.95rem;">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn" id="loginBtn" style="width: 100%; background: linear-gradient(135deg, #ff6b35, #f7931e); font-size: 1.2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600;">
+                        <i class="fas fa-sign-in-alt"></i> Login & Continue Shopping
+                    </button>
+                </form>
+
+                <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #f1f1f1;">
+                    <p style="color: #666; margin-bottom: 1rem;">Don't have account? <a href="register.html" style="color: #28a745; font-weight: 600;">Register here</a></p>
+                    <p style="color: #999; font-size: 0.85rem;">🔒 Secure Login | Data Encrypted</p>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" style="display: none; background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 25px 70px rgba(0,0,0,0.2); text-align: center;">
+                <div style="font-size: 5rem; color: #28a745; margin-bottom: 2rem;"><i class="fas fa-check-circle"></i></div>
+                <h2 style="color: #232f3e; font-size: 2.5rem; margin-bottom: 1rem;">Login Successful! 🎉</h2>
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 1rem;">Welcome back <span id="welcomeName"></span>!</p>
+                <p style="font-size: 1rem; color: #28a745; margin-bottom: 2rem;">Your address will auto-fill on checkout</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="products.html" class="btn" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 1rem 2.5rem; text-decoration: none; border-radius: 12px; font-weight: 600;">🛒 Continue Shopping</a>
+                    <a href="orders.html" class="btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; padding: 1rem 2.5rem; text-decoration: none; border-radius: 12px; font-weight: 600;">📋 My Orders</a>
+                    <a href="cart.html" class="btn" style="background: #6c757d; color: white; padding: 1rem 2.5rem; text-decoration: none; border-radius: 12px;">🛒 View Cart</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- ONLY SCRIPT PART CHANGE KIYA HAI (upar ka HTML same rehne do) -->
+<script>
+let users = JSON.parse(localStorage.getItem('users')) || [];
+let currentUser = null;
+
+// LOGIN FORM
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const identifier = document.getElementById('loginIdentifier').value.toLowerCase().trim();
+    const password = document.getElementById('loginPassword').value;
+
+    const user = users.find(u => u.email === identifier || u.phone === identifier);
+
+    if (!user) {
+        showError("loginError", "❌ User not found!");
+        return;
+    }
+
+    if (user.password !== password) {
+        showError("loginError", "❌ Wrong password!");
+        return;
+    }
+
+    // ✅ SUCCESS
+    user.isLoggedIn = true;
+    currentUser = user;
+
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(user));
+
+    // ⭐ IMPORTANT
+    localStorage.setItem("userLoggedIn", "true");
+
+    // UI change
+    document.getElementById('loginFormContainer').style.display = 'none';
+    document.getElementById('successMessage').style.display = 'block';
+    document.getElementById('welcomeName').textContent = `${user.firstName} ${user.lastName}`;
+
+    showToast(`Welcome back ${user.firstName} 🎉`);
+});
+
+// ERROR FUNCTION
+function showError(id, msg) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.style.display = 'block';
+}
+
+// AUTO LOGIN CHECK
+window.addEventListener('load', function() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (user && user.isLoggedIn) {
+        showToast(`Already logged in 👋`);
+        setTimeout(() => window.location.href = "products.html", 1500);
+    }
+});
+</script>
+
+    <script src="script.js"></script>
+</body>
+</html>

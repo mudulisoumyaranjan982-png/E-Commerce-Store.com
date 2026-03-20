@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SoumyaMart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛒 SoumyaMart</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="products.html">📦 Products</a></li>
+                <li><a href="cart.html">🛒 Cart (<span class="cart-count">0</span>)</a></li>
+                <li><a href="login.html">🔐 Login</a></li>
+                <li><a href="register.html">📝 Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 90px; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+        <div style="max-width: 500px; width: 100%;">
+            <!-- Register Form -->
+            <div id="registerFormContainer" style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <h1 style="font-size: 2.5rem; color: #232f3e; margin-bottom: 0.5rem;">📝 Create Account</h1>
+                    <p style="color: #666; font-size: 1.1rem;">Fill all details - data will be permanently saved</p>
+                </div>
+
+                <form id="registerForm">
+                    <!-- Personal Info -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">First Name *</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Last Name *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Email ID *</label>
+                        <input type="email" id="email" required>
+                        <div id="emailError" style="color: #dc3545; font-size: 0.9rem; display: none;"></div>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Phone Number *</label>
+                        <input type="tel" id="phone" required>
+                        <div id="phoneError" style="color: #dc3545; font-size: 0.9rem; display: none;"></div>
+                    </div>
+
+                    <!-- Password -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Password *</label>
+                        <input type="password" id="password" required>
+                        <div id="passwordError" style="color: #dc3545; font-size: 0.9rem; display: none;"></div>
+                    </div>
+
+                    <!-- Delivery Address -->
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Delivery Address *</label>
+                        <textarea id="address" rows="3" required style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-family: inherit; resize: vertical; font-size: 1rem;"></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">City *</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #232f3e;">Pincode *</label>
+                            <input type="text" id="pincode" required>
+                        </div>
+                    </div>
+
+                    <!-- Terms -->
+                    <div style="margin-bottom: 2rem; display: flex; align-items: flex-start; gap: 1rem;">
+                        <input type="checkbox" id="terms" required style="width: 20px; height: 20px; margin-top: 0.2rem;">
+                        <label for="terms" style="font-size: 0.95rem; color: #333; line-height: 1.5;">
+                            I accept terms & conditions and my data will be permanently saved
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; background: linear-gradient(135deg, #28a745, #20c997); font-size: 1.2rem; padding: 1.2rem; border-radius: 12px;">
+                        <i class="fas fa-user-plus"></i> Create Account & Save Data
+                    </button>
+                </form>
+
+                <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                    <p style="color: #666;">Already have account? <a href="login.html" style="color: #ff9900; font-weight: 600;">Login here</a></p>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" style="display: none; background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center;">
+                <div style="font-size: 5rem; color: #28a745; margin-bottom: 2rem;"><i class="fas fa-check-circle"></i></div>
+                <h2 style="color: #232f3e; font-size: 2.5rem; margin-bottom: 1rem;">Account Created Successfully!</h2>
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">Your data is permanently saved. Please <strong>Login</strong> now.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="login.html" class="btn" style="background: linear-gradient(135deg, #ff9900, #f28c38); color: white; padding: 1rem 2.5rem; text-decoration: none; border-radius: 12px;">🔐 Login Now</a>
+                    <a href="index.html" class="btn" style="background: #6c757d; color: white; padding: 1rem 2.5rem; text-decoration: none; border-radius: 12px;">🏠 Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const userData = {
+        id: Date.now(),
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value.toLowerCase(),
+        phone: document.getElementById('phone').value,
+        password: document.getElementById('password').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        pincode: document.getElementById('pincode').value,
+        isLoggedIn: false
+    };
+
+    // VALIDATION
+    if (users.find(u => u.email === userData.email)) {
+        showError("emailError", "❌ Email already exists!");
+        return;
+    }
+
+    if (users.find(u => u.phone === userData.phone)) {
+        showError("phoneError", "❌ Phone already exists!");
+        return;
+    }
+
+    if (userData.password.length < 6) {
+        showError("passwordError", "❌ Password min 6 chars!");
+        return;
+    }
+
+    // SAVE USER
+    users.push(userData);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // SUCCESS UI
+    document.getElementById('registerFormContainer').style.display = 'none';
+    document.getElementById('successMessage').style.display = 'block';
+
+    showToast("Account created successfully 🎉");
+});
+
+// ERROR FUNCTION
+function showError(id, msg) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.style.display = 'block';
+}
+</script>
+    <script src="script.js"></script>
+</body>
+</html>

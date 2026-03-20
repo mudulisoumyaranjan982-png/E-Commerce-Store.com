@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders - SoumyaMart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛒 SoumyaMart</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="products.html">📦 Products</a></li>
+                <li><a href="cart.html">🛒 Cart (<span class="cart-count">0</span>)</a></li>
+                <li><a href="orders.html">📋 Orders</a></li>
+                <li><a href="about.html">ℹ️ About</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 90px; padding: 2rem; max-width: 1400px; margin: 0 auto;">
+        <!-- Header -->
+        <div class="page-header" style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); margin-bottom: 2rem; text-align: center;">
+            <h1 style="font-size: 2.8rem; color: #232f3e; margin-bottom: 0.5rem;">
+                <i class="fas fa-box-open"></i> Your Orders
+            </h1>
+            <p style="font-size: 1.2rem; color: #666;">Track all your confirmed orders here</p>
+        </div>
+
+        <!-- No Orders -->
+        <div id="noOrders" style="background: #f8f9fa; border-radius: 12px; padding: 4rem 2rem; text-align: center; display: none;">
+            <div style="font-size: 6rem; color: #ff6b35; margin-bottom: 2rem;"><i class="fas fa-box"></i></div>
+            <h2 style="color: #232f3e; font-size: 2.5rem; margin-bottom: 1rem;">No orders found!</h2>
+            <p style="font-size: 1.3rem; color: #666; margin-bottom: 2rem;">Start shopping and your orders will appear here</p>
+            <a href="products.html" class="btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; padding: 1.2rem 3rem; font-size: 1.2rem; border-radius: 50px; text-decoration: none;">🛒 Start Shopping</a>
+        </div>
+
+        <!-- Orders List -->
+        <div id="ordersList" style="display: none;">
+            <div id="ordersContainer"></div>
+        </div>
+    </main>
+
+    <footer style="background: #232f3e; color: white; text-align: center; padding: 3rem 2rem; margin-top: 4rem;">
+        <p>SoumyaMart Orders - Made by Soumyaranjan Muduli | Bhubaneswar, Odisha</p>
+    </footer>
+
+    <script>
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function renderOrders() {
+            const noOrdersDiv = document.getElementById('noOrders');
+            const ordersListDiv = document.getElementById('ordersList');
+            const ordersContainer = document.getElementById('ordersContainer');
+
+            if (orders.length === 0) {
+                noOrdersDiv.style.display = 'block';
+                ordersListDiv.style.display = 'none';
+                return;
+            }
+
+            noOrdersDiv.style.display = 'none';
+            ordersListDiv.style.display = 'block';
+
+            ordersContainer.innerHTML = orders.map((order, orderIndex) => {
+                const orderDate = new Date().toLocaleDateString('hi-IN');
+                const totalAmount = parseFloat(order.total.replace(/[₹,]/g, ''));
+                const deliveryStatus = Math.random() > 0.3 ? 'Delivered' : 'Out for Delivery';
+                const statusColor = deliveryStatus === 'Delivered' ? '#28a745' : '#ff9900';
+
+                return `
+                    <div style="background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-bottom: 2.5rem; overflow: hidden;">
+                        <!-- Order Header -->
+                        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem 2rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 0.3rem;">Order Placed:</div>
+                                    <div style="font-size: 1.4rem; font-weight: 600;">${orderDate}</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 0.3rem;">Order ID: #${orderIndex + 1}</div>
+                                    <div style="font-size: 1.6rem; font-weight: 700;">₹${totalAmount.toLocaleString()}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Status -->
+                        <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #eee;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 12px; height: 12px; background: ${statusColor}; border-radius: 50%;"></div>
+                                <div>
+                                    <div style="font-size: 1.3rem; font-weight: 600; color: ${statusColor};">${deliveryStatus}</div>
+                                    <div style="color: #666; font-size: 0.95rem;">Expected delivery: Today 10:30 AM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Details -->
+                        <div style="padding: 1.5rem 2rem; background: #f8f9fa;">
+                            <h4 style="color: #232f3e; margin-bottom: 1rem; font-size: 1.2rem;">
+                                <i class="fas fa-user"></i> Delivered to:
+                            </h4>
+                            <div style="line-height: 1.6; color: #333;">
+                                <strong>${order.customer.firstName} ${order.customer.lastName}</strong><br>
+                                ${order.customer.phone}<br>
+                                ${order.customer.address}, ${order.customer.city} - ${order.customer.pincode}
+                            </div>
+                        </div>
+
+                        <!-- Order Items -->
+                        <div style="padding: 0 2rem 2rem;">
+                            <h4 style="color: #232f3e; margin: 1.5rem 0 1rem; font-size: 1.2rem;">
+                                Items Ordered (${order.items.length})
+                            </h4>
+                            <div style="display: grid; gap: 1.5rem;">
+                                ${order.items.map(item => `
+                                    <div style="display: flex; gap: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                                        <div style="width: 80px; height: 80px; background: ${typeof item.image === 'string' ? '#f8f9fa' : 'white'}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;">
+                                            ${typeof item.image === 'string' ? item.image : item.image}
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <div style="font-weight: 600; color: #232f3e; margin-bottom: 0.5rem; font-size: 1.1rem;">${item.name}</div>
+                                            <div style="color: #666; margin-bottom: 0.5rem;">Quantity: ${item.quantity}</div>
+                                            <div style="font-weight: 700; color: #B12704;">₹${(item.price * item.quantity).toLocaleString()}</div>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <button onclick="buyAgain(${orderIndex}, ${order.items.indexOf(item)})" class="btn" style="background: #28a745; padding: 0.6rem 1.5rem; font-size: 0.9rem;">
+                                                Buy Again
+                                            </button>
+                                            <button onclick="downloadInvoice(${orderIndex})" style="background: #007bff; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 6px; margin-top: 0.5rem; cursor: pointer;">
+                                                <i class="fas fa-download"></i> Invoice
+                                            </button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function buyAgain(orderIndex, itemIndex) {
+            const item = orders[orderIndex].items[itemIndex];
+            addToCart(item.id || `order-${orderIndex}-${itemIndex}`, item.name, item.price, item.image);
+            alert(`${item.name} has been added to cart! 🛒`);
+        }
+
+        function downloadInvoice(orderIndex) {
+            const order = orders[orderIndex];
+            alert(`Invoice Download:\n\nOrder ID: ${orderIndex + 1}\nCustomer: ${order.customer.firstName} ${order.customer.lastName}\nTotal: ${order.total}\n\n(Real invoice PDF coming soon)`);
+        }
+
+        // Render orders on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderOrders();
+            updateCartCount();
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

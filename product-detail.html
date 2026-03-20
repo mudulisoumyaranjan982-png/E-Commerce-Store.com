@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple iPhone 15 - SoumyaMart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛒 SoumyaMart</div>
+            <ul class="nav-links">
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="products.html">📦 Products</a></li>
+                <li><a href="cart.html">🛒 Cart (<span class="cart-count">0</span>)</a></li>
+                <li><a href="about.html">ℹ️ About</a></li>
+                <li><a href="contact.html">📧 Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top: 90px; max-width: 1400px; margin-left: auto; margin-right: auto; padding: 2rem;">
+        <!-- Product Main Section -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 3rem;">
+            
+            <!-- Product Images -->
+            <div>
+                <div style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1); text-align: center;">
+                    <!-- Main Image -->
+                    <div style="width: 450px; height: 450px; margin: 0 auto 2rem; background: #f8f9fa; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="images/iphone15.jpg" alt="iPhone 15" 
+                             style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    
+                    <!-- Thumbnail Images -->
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <div style="width: 80px; height: 80px; background: #f8f9fa; border-radius: 8px; border: 3px solid transparent; cursor: pointer;" onclick="changeImage('images/iphone15.jpg')">
+                            <img src="images/iphone15.jpg" alt="iPhone 15" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        </div>
+                        <div style="width: 80px; height: 80px; background: #f8f9fa; border-radius: 8px; border: 3px solid transparent; cursor: pointer;" onclick="changeImage('https://via.placeholder.com/80/ff9900/fff?text=Side')">
+                            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📱</div>
+                        </div>
+                        <div style="width: 80px; height: 80px; background: #f8f9fa; border-radius: 8px; border: 3px solid transparent; cursor: pointer;" onclick="changeImage('https://via.placeholder.com/80/232f3e/fff?text=Back')">
+                            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">📱</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div style="display: flex; flex-direction: column;">
+                <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="product-rating" style="color: #FFA41C;">
+                            ⭐⭐⭐⭐⭐ 4.9 (25,678 reviews)
+                        </div>
+                        <span style="color: #28a745; font-weight: 600; background: #d4edda; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem;">In Stock</span>
+                    </div>
+                    
+                    <h1 style="font-size: 2.2rem; color: #0f1111; margin-bottom: 1rem; line-height: 1.3;">Apple iPhone 15 (128GB) - Black</h1>
+                    
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                        <div style="font-size: 2rem; font-weight: 800; color: #B12704;">₹69,999</div>
+                        <div style="text-decoration: line-through; color: #666; font-size: 1.2rem;">₹79,900</div>
+                        <div style="background: #28a745; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">13% off</div>
+                    </div>
+
+                    <!-- Color Options -->
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.8rem; font-weight: 600; color: #232f3e;">Color:</label>
+                        <div style="display: flex; gap: 0.8rem;">
+                            <div class="color-option black active" onclick="selectColor(this)" data-color="Black"></div>
+                            <div class="color-option blue" onclick="selectColor(this)" data-color="Blue"></div>
+                            <div class="color-option pink" onclick="selectColor(this)" data-color="Pink"></div>
+                            <div class="color-option green" onclick="selectColor(this)" data-color="Green"></div>
+                        </div>
+                    </div>
+
+                    <!-- Storage Options -->
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.8rem; font-weight: 600; color: #232f3e;">Storage:</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <button class="storage-btn active" onclick="selectStorage(this)">128GB</button>
+                            <button class="storage-btn" onclick="selectStorage(this)">256GB</button>
+                            <button class="storage-btn" onclick="selectStorage(this)">512GB</button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.8rem; font-weight: 600; color: #232f3e;">Quantity:</label>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <button onclick="updateQty(-1)" style="width: 45px; height: 45px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 1.2rem; cursor: pointer;">-</button>
+                            <span id="qty" style="font-size: 1.3rem; font-weight: 600; min-width: 30px; text-align: center;">1</span>
+                            <button onclick="updateQty(1)" style="width: 45px; height: 45px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 1.2rem; cursor: pointer;">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Buy Buttons -->
+                    <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                        <button onclick="addToCart('iphone15-detail', 'iPhone 15 (128GB)', 69999, 'images/iphone15.jpg')" 
+                                class="btn" style="flex: 2; background: linear-gradient(135deg, #ff9900, #f28c38); font-size: 1.1rem; padding: 1.2rem;">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button onclick="buyNow()" class="btn" style="flex: 1; background: linear-gradient(135deg, #28a745, #20c997); font-size: 1.1rem; padding: 1.2rem;">
+                            <i class="fas fa-bolt"></i> Buy Now
+                        </button>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;">
+                            <i class="fas fa-truck" style="color: #28a745; font-size: 1.2rem;"></i>
+                            <span style="font-weight: 600;">Free Delivery</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <i class="fas fa-undo" style="color: #007bff; font-size: 1.2rem;"></i>
+                            <span>7 Day Return Policy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Description Tabs -->
+        <div style="background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
+            <div style="display: flex; background: #f8f9fa; border-bottom: 1px solid #eee;">
+                <button class="tab-btn active" onclick="showTab('description')">Description</button>
+                <button class="tab-btn" onclick="showTab('specs')">Specifications</button>
+                <button class="tab-btn" onclick="showTab('reviews')">Reviews (25,678)</button>
+            </div>
+            
+            <div id="description" class="tab-content" style="padding: 2.5rem;">
+                <h3 style="color: #232f3e; margin-bottom: 1.5rem;">About this Product</h3>
+                <ul style="line-height: 1.8; color: #333;">
+                    <li>🔥 A16 Bionic chip with 4-core GPU - 50% faster graphics</li>
+                    <li>📱 Dynamic Island - Interactive way to interact with alerts</li>
+                    <li>🎥 48MP Main camera - Next-level photography</li>
+                    <li>🔋 All-day battery life - Up to 20 hours video playback</li>
+                    <li>💎 Ceramic Shield - Tougher than any smartphone glass</li>
+                    <li>🌐 5G support - Superfast download speeds</li>
+                </ul>
+            </div>
+
+            <div id="specs" class="tab-content" style="display: none; padding: 2.5rem;">
+                <h3 style="color: #232f3e; margin-bottom: 2rem;">Technical Specifications</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h4 style="color: #232f3e; margin-bottom: 1rem;">Display</h4>
+                        <p><strong>Size:</strong> 6.1-inch Super Retina XDR</p>
+                        <p><strong>Resolution:</strong> 2556x1179 pixels</p>
+                        <p><strong>Refresh Rate:</strong> 60Hz</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #232f3e; margin-bottom: 1rem;">Processor</h4>
+                        <p><strong>Chip:</strong> A16 Bionic</p>
+                        <p><strong>RAM:</strong> 6GB</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #232f3e; margin-bottom: 1rem;">Camera</h4>
+                        <p><strong>Rear:</strong> 48MP Main + 12MP Ultra Wide</p>
+                        <p><strong>Front:</strong> 12MP TrueDepth</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #232f3e; margin-bottom: 1rem;">Battery</h4>
+                        <p><strong>Capacity:</strong> Up to 20 hours video</p>
+                        <p><strong>Charging:</strong> 20W Fast Charging</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reviews" class="tab-content" style="display: none; padding: 2.5rem;">
+                <h3 style="color: #232f3e; margin-bottom: 2rem;">Customer Reviews (25,678)</h3>
+                <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+                    <div style="text-align: center;">
+                        <div class="product-rating" style="justify-content: center;">⭐⭐⭐⭐⭐ 4.9</div>
+                        <p style="font-size: 2.5rem; font-weight: 800; color: #28a745; margin: 0;">25,678</p>
+                        <p>Total Reviews</p>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div style="width: 100px;">5 Star</div>
+                            <div style="flex: 1; height: 8px; background: #eee; border-radius: 4px;">
+                                <div style="width: 92%; height: 100%; background: #FFA41C; border-radius: 4px;"></div>
+                            </div>
+                            <span>92%</span>
+                        </div>
+                        <!-- More review bars... -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentImage = 'images/iphone15.jpg';
+        let quantity = 1;
+
+        function changeImage(src) {
+            document.querySelector('.product-image img').src = src;
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            event.target.parentElement.classList.add('active');
+        }
+
+        function selectColor(el) {
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function selectStorage(el) {
+            document.querySelectorAll('.storage-btn').forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function updateQty(change) {
+            quantity = Math.max(1, quantity + change);
+            document.getElementById('qty').textContent = quantity;
+        }
+
+        function buyNow() {
+            addToCart('iphone15-buy', `iPhone 15 (${document.querySelector('.storage-btn.active').textContent})`, 69999 * quantity, 'images/iphone15.jpg');
+            alert('Redirecting to checkout...');
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
