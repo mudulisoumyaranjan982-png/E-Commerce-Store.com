@@ -113,3 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.nav-links')?.classList.toggle('active');
   });
 });
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("show");
+}
